@@ -7,8 +7,9 @@ export const StaticTable = ({
 }: {
   data: TableType
   horizontal?: boolean
-}) => (
-  horizontal
-  ? <span>Horizontal table is not implemented yet</span>
-  : <VerticalTable data={data} />
+}) =>
+  horizontal ? (
+    <span>Horizontal table is not implemented yet</span>
+  ) : (
+    <VerticalTable data={data} />
   )
