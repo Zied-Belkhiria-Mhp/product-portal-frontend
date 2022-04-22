@@ -1,4 +1,4 @@
-import { SearchInput } from 'cx-portal-shared-components'
+import { SearchInput, StaticTable } from 'cx-portal-shared-components'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
@@ -43,20 +43,22 @@ export default function ThirdPartyLicenses() {
         value={filterExpr}
         onChange={(event) => doFilter(event.target.value)}
       />
-      <ul>
-        {items?.data.body
-          .filter(
-            (pkg: string[]) =>
-              filter.test(pkg[0]) || filter.test(pkg[2]) || filter.test(pkg[5])
-          )
-          .map((pkg: string[], i: number) => (
-            <li key={i}>
-              <a href={`https://www.npmjs.com/package/${pkg[0]}`}>{pkg[0]}</a>
-              <span> {pkg[1]} </span>
-              <span> {pkg[2]} </span>
-            </li>
-          ))}
-      </ul>
+      {items?.data ? (
+        <StaticTable
+          horizontal={false}
+          data={{
+            head: items.data.head,
+            body: items?.data.body.filter(
+              (pkg: string[]) =>
+                filter.test(pkg[0]) ||
+                filter.test(pkg[2]) ||
+                filter.test(pkg[5])
+            ),
+          }}
+        />
+      ) : (
+        <span>no data</span>
+      )}
     </main>
   )
 }

@@ -1,4 +1,5 @@
-import { Nullable, TableType } from 'types/MainTypes'
+import { TableType } from 'cx-portal-shared-components'
+import { Nullable } from 'types/MainTypes'
 
 export type LicenseType = {
   type: string
