@@ -1,14 +1,5 @@
+export type FormProps = {}
 
-export type FormProps = {
-
-}
-
-export const Form = ({
-                        ...props
-                      }: FormProps) => {
-  return (
-    <div>
-
-    </div>
-  )
+export const Form = ({ ...props }: FormProps) => {
+  return <div></div>
 }
